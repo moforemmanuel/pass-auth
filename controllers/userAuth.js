@@ -3,11 +3,11 @@ const User = require("../models/User");
 
 module.exports = {
     userAuth: (req, res) => {
-        const {firstName, lastName, email, phone, password, password2 } = req.body;
+        const {userName, email, phone, password, password2 } = req.body;
         let errors = [];
 
         //check required fields
-        if (!(firstName && email && phone && password && password2)) {
+        if (!(userName && email && phone && password && password2)) {
             errors.push({
                 msg: 'Please fill in all fields'
             });
@@ -28,8 +28,7 @@ module.exports = {
         if (errors.length > 0){
             res.render('register', {
                 errors,
-                firstName,
-                lastName,
+                userName,
                 email,
                 phone
             })
@@ -43,8 +42,7 @@ module.exports = {
                         errors.push({ msg: 'Email is already registered' });
                         res.render('register', {
                             errors,
-                            firstName,
-                            lastName,
+                            userName,
                             phone,
                             password,
                             password2
@@ -54,7 +52,7 @@ module.exports = {
                         // new user
                         // let isVerified = false;
                         const newUser = new User({
-                            name,
+                            userName,
                             email,
                             phone,
                             password

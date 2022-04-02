@@ -4,7 +4,7 @@ module.exports = (req, accessToken, refreshToken, profile, done) => {
     // console.log(profile);
     // return done(null, profile);
 
-    asynchorous
+    // async
     process.nextTick( () => {
         //find user in db based on their fb id
         User.findOne({'email': profile.emails[0].value}, (err, user) => {
@@ -26,7 +26,7 @@ module.exports = (req, accessToken, refreshToken, profile, done) => {
                     // _id: profile.id,
                     provider: profile.provider,
                     providerID: profile.id,
-                    name: profile.displayName || '',
+                    userName: profile.displayName || '',
                     token: accessToken,
                     email: profile.emails[0].value,
                     phone: profile.phone || '',
