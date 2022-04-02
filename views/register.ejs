@@ -7,17 +7,17 @@
         <%- include ("./partials/messages")  %>
         <form action="/users/register" method="POST">
           <div class="form-group">
-            <label for="name">First Name</label>
+            <label for="userName">user Name</label>
             <input
               type="name"
-              id="firsName"
-              name="firstName"
+              id="userName"
+              name="userName"
               class="form-control"
-              placeholder="Enter first name"
-              value="<%= typeof firstName != 'undefined' ? firstName : '' %>"
+              placeholder="Enter user name"
+              value="<%= typeof userName != 'undefined' ? userName : '' %>"
             />
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="lastName">Last Name</label>
             <input
               type="name"
@@ -26,8 +26,8 @@
               class="form-control"
               placeholder="Enter last name"
               value="<%= typeof lastName != 'undefined' ? lastName : '' %>"
-            />
-          </div>
+            /> 
+          </div> -->
           <div class="form-group">
             <label for="email">Email</label>
             <input
