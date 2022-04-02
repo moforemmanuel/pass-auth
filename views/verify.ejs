@@ -1,0 +1,31 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Verify Account </h1>
+
+        <%- include ("./partials/messages") %>
+        <form action="/users/verify-by-email" method="POST">
+          <div class="form-group">
+            <label for="otp">Enter OTP</label>
+            <input
+              type="text"
+              id="otp"
+              name="otp"
+              class="form-control"
+              placeholder="Enter OTP"
+            />
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+          
+        </form>
+        <form action="/users/verify-resend" method="POST">
+          <button type="submit" class="btn btn-primary btn-block">Resend</button>
+        </form>
+        <p class="lead mt-4">
+          No Account? <a href="/users/register">Register</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  
