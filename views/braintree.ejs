@@ -1,0 +1,56 @@
+<!-- <div id="dropin-container"></div>
+
+  <script type="text/javascript">
+  // call `braintree.dropin.create` code here
+
+  // Step two: create a dropin instance using that container (or a string
+    //   that functions as a query selector such as `#dropin-container`)
+    braintree.dropin.create({
+        container: document.getElementById('dropin-container'),
+        // ...plus remaining configuration
+        }).then((dropinInstance) => {
+        // Use `dropinInstance` here
+        // Methods documented at https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
+    }).catch((error) => {});
+  </script> -->
+
+
+  <form id="payment-form" action="/braintree/checkout" method="post">
+    <!-- Putting the empty container you plan to pass to
+      `braintree.dropin.create` inside a form will make layout and flow
+      easier to manage -->
+    <div id="dropin-container"></div>
+    <input type="submit" />
+    <input type="hidden" id="nonce" name="payment_method_nonce"/>
+  </form>
+
+  <!-- <script type="text/javascript">
+    // call braintree.dropin.create code here
+    
+    axios.get('/braintree/client_token')
+        .then(result => {const CLIENT_AUTHORIZATION = result;})
+        .catch(err => console.log(err));
+
+    const form = document.getElementById('payment-form');
+
+    braintree.dropin.create({
+    authorization: CLIENT_AUTHORIZATION,
+    container: '#dropin-container'
+    }).then((dropinInstance) => {
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        dropinInstance.requestPaymentMethod().then((payload) => {
+        // Step four: when the user is ready to complete their
+        //   transaction, use the dropinInstance to get a payment
+        //   method nonce for the user's selected payment method, then add
+        //   it a the hidden field before submitting the complete form to
+        //   a server-side integration
+        document.getElementById('nonce').value = payload.nonce;
+        form.submit();
+        }).catch((error) => { throw error; });
+    });
+    }).catch((error) => {
+    // handle errors
+    });
+  </script> -->
