@@ -12,6 +12,8 @@ const bodyParser = require('body-parser');
 //import routes
 const index = require('./routes/index');
 const users = require('./routes/users');
+const payments = require('./routes/payments');
+const braintree = require('./routes/braintree');
 
 
 
@@ -30,6 +32,7 @@ require('dotenv').config();
 require('./config/pass-local')(passport);
 require('./config/pass-fb')(passport);
 require('./config/pass-google')(passport);
+require('./config/pass-twitter')(passport);
 
 
 
@@ -97,6 +100,8 @@ mongoose.connect(URI, {
 //Routes
 app.use('/', index);
 app.use('/users', users);
+app.use('/payments', payments);
+app.use('/braintree', braintree);
 
 
 app.listen(PORT, ()=> console.log(`Server started at port ${PORT}`))

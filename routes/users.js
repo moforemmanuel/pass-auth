@@ -74,6 +74,19 @@ router.get('/auth/google/callback', passport.authenticate('google', {
     failureRedirect: '/login'
 }));
 
+//twiiter auth
+router.get('/auth/twitter', (req, res, next) => {
+    req.session.strategy = req.body.strategy;
+    passport.authenticate('twitter', {scope: 'email'})(req, res, next);
+});
+
+
+//facebook auth callback
+router.get('/auth/twitter/callback', passport.authenticate('twitter', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/login'
+}));
+
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/dashboard',
